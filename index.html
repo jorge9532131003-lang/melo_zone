@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LaMelo Ball | MB1 Official Fan Zone</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* Fondo general */
+        body{
+            margin:0;
+            padding:0;
+            background:#0a0a0a;
+            color:white;
+            font-family:'Poppins', sans-serif;
+            overflow-x:hidden;
+            cursor:none;
+        }
+
+        /* Fondo animado */
+        #particles{
+            position:fixed;
+
+            top:0;
+            left:0;
+
+            width:100%;
+            height:100%;
+
+            z-index:-1;
+
+            background:
+            radial-gradient(circle at center, #111 0%, #050505 100%);
+        }
+
+        /* Header */
+        header{
+            text-align:center;
+            padding:40px 20px;
+        }
+
+        header h1{
+            font-size:4rem;
+            font-family:'Orbitron', sans-serif;
+            color:#00f7ff;
+
+            text-shadow:
+                0 0 10px #00f7ff,
+                0 0 20px #00f7ff;
+        }
+
+        .subtitle{
+            color:#aaa;
+            letter-spacing:4px;
+        }
+
+        /* Contenedor */
+        .container{
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            padding:60px;
+            flex-wrap:wrap;
+        }
+
+        /* Cards */
+        .card{
+            background:#111;
+            width:280px;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+
+            transition:all 0.35s ease;
+
+            position:relative;
+            overflow:hidden;
+
+            border:2px solid rgba(255,255,255,0.1);
+
+            box-shadow:0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Hover */
+        .card:hover{
+            transform:translateY(-15px) scale(1.03);
+
+            box-shadow:
+                0 0 10px #00f7ff,
+                0 0 20px #00f7ff,
+                0 0 40px #00f7ff;
+
+            border:2px solid #00f7ff;
+        }
+
+        /* Brillo animado */
+        .card::before{
+            content:"";
+
+            position:absolute;
+
+            top:-100%;
+            left:-100%;
+
+            width:200%;
+            height:200%;
+
+            background:linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+
+            transform:rotate(25deg);
+
+            transition:0.6s;
+        }
+
+        .card:hover::before{
+            top:100%;
+            left:100%;
+        }
+
+        /* Botones */
+        .btn{
+            display:inline-block;
+
+            margin-top:15px;
+            padding:10px 20px;
+
+            background:#00f7ff;
+            color:black;
+
+            text-decoration:none;
+
+            border-radius:10px;
+
+            font-weight:bold;
+
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:white;
+            transform:scale(1.05);
+        }
+
+        /* Footer */
+        footer{
+            text-align:center;
+            padding:40px 20px;
+            color:#aaa;
+        }
+
+        /* Balón cursor */
+        .basketball{
+            width:40px;
+            height:40px;
+
+            background-image:url('https://cdn-icons-png.flaticon.com/512/889/889455.png');
+
+            background-size:cover;
+            background-position:center;
+
+            position:fixed;
+
+            top:0;
+            left:0;
+
+            transform:translate(-50%, -50%);
+
+            pointer-events:none;
+
+            z-index:9999;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Fondo animado -->
+    <canvas id="particles"></canvas>
+
+    <!-- Balón cursor -->
+    <div class="basketball"></div>
+
+    <!-- Header -->
+    <header>
+        <h1>LAMELO ZONE</h1>
+        <p class="subtitle">NOT FROM HERE</p>
+    </header>
+
+    <!-- Cards -->
+    <main class="container">
+
+        <div class="card">
+            <h3>⚡ HISTORIA</h3>
+            <p>Desde sus videos virales hasta el All-Star de la NBA.</p>
+
+            <a href="historia.html" class="btn">
+                Explorar
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>👟 DROPS</h3>
+            <p>La colección completa de sus zapatillas PUMA MB.</p>
+
+            <a href="drops.html" class="btn">
+                Ver Colección
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>📊 STATS</h3>
+            <p>Análisis detallado de su rendimiento actual.</p>
+
+            <a href="stats.html" class="btn">
+                Ver Stats
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Contacto</h3>
+
+        <p>
+            Para más información o consultas,
+            puedes contactarnos.
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            contacto@lamelozone.com
+        </p>
+
+        <p>
+            <strong>Tel:</strong>
+            +34 612 345 678
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+
+        /* Cursor balón */
+        const ball = document.querySelector('.basketball');
+
+        document.addEventListener('mousemove', (e) => {
+
+            ball.style.left = e.clientX + 'px';
+
+            ball.style.top = e.clientY + 'px';
+
+        });
+
+        /* Fondo partículas */
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+
+        class Particle{
+
+            constructor(){
+
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+
+                this.size = Math.random() * 3 + 1;
+
+                this.speedX = (Math.random() - 0.5) * 1;
+                this.speedY = (Math.random() - 0.5) * 1;
+            }
+
+            update(){
+
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if(this.x > canvas.width) this.x = 0;
+                if(this.x < 0) this.x = canvas.width;
+
+                if(this.y > canvas.height) this.y = 0;
+                if(this.y < 0) this.y = canvas.height;
+            }
+
+            draw(){
+
+                ctx.fillStyle = "#00f7ff";
+
+                ctx.beginPath();
+
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+                ctx.fill();
+            }
+
+        }
+
+        function init(){
+
+            particlesArray = [];
+
+            for(let i = 0; i < 120; i++){
+
+                particlesArray.push(new Particle());
+
+            }
+
+        }
+
+        function animate(){
+
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+
+            particlesArray.forEach(particle => {
+
+                particle.update();
+                particle.draw();
+
+            });
+
+            requestAnimationFrame(animate);
+
+        }
+
+        init();
+        animate();
+
+        window.addEventListener("resize", () => {
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            init();
+
+        });
+
+    </script>
+
+</body>
+</html>
