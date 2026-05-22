@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drops | LaMelo Zone</title>
 
+    <!-- Preconnect para optimizar la carga de fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,38 +17,49 @@
 <body>
 
     <div class="container">
-        <a href="index.html" class="back-link">← VOLVER AL INICIO</a>
+        <!-- Cambio a <nav> para el enlace de retorno -->
+        <nav class="back-nav" aria-label="Navegación secundaria">
+            <a href="index.html" class="back-link">← VOLVER AL INICIO</a>
+        </nav>
 
-        <div class="header-drops">
-            <h1>PUMA x LaMelo Ball</h1>
-            <p>La colección "Not From Here" al completo.</p>
-        </div>
+        <!-- Todo el catálogo envuelto en el bloque principal -->
+        <main>
+            <header class="header-drops">
+                <h1>PUMA x LaMelo Ball</h1>
+                <p>La colección "Not From Here" al completo.</p>
+            </header>
 
-        <div class="drops-grid">
-            <div class="shoe-card">
-                <div class="shoe-img">MB.01</div>
-                <span class="tag">The Original</span>
-                <h3>MB.01 "Galaxy"</h3>
-                <p>El par que lo cambió todo. Diseño galáctico y amortiguación Nitro.</p>
-                <span class="price">$125.00</span>
-            </div>
+            <!-- Se cambió el contenedor gris a una sección con etiqueta descriptiva -->
+            <section class="drops-grid" aria-label="Catálogo de zapatillas">
+                
+                <!-- Cada zapatilla ahora es un <article> independiente -->
+                <article class="shoe-card">
+                    <!-- Si usas divs para texto alternativo a imágenes, aria-label ayuda a los lectores de pantalla -->
+                    <div class="shoe-img" role="img" aria-label="Silueta PUMA MB.01">MB.01</div>
+                    <span class="tag">The Original</span>
+                    <h3>MB.01 "Galaxy"</h3>
+                    <p>El par que lo cambió todo. Diseño galáctico y amortiguación Nitro.</p>
+                    <span class="price" aria-label="Precio: 125 dólares">$125.00</span>
+                </article>
 
-            <div class="shoe-card">
-                <div class="shoe-img alt-img-1">MB.02</div>
-                <span class="tag">Rare</span>
-                <h3>MB.02 "Jade"</h3>
-                <p>Inspirado en la cultura china y la energía del juego de Melo.</p>
-                <span class="price">$130.00</span>
-            </div>
+                <article class="shoe-card">
+                    <div class="shoe-img alt-img-1" role="img" aria-label="Silueta PUMA MB.02">MB.02</div>
+                    <span class="tag">Rare</span>
+                    <h3>MB.02 "Jade"</h3>
+                    <p>Inspirado en la cultura china y la energía del juego de Melo.</p>
+                    <span class="price" aria-label="Precio: 130 dólares">$130.00</span>
+                </article>
 
-            <div class="shoe-card">
-                <div class="shoe-img alt-img-2">MB.03</div>
-                <span class="tag">New Drop</span>
-                <h3>MB.03 "Toxic"</h3>
-                <p>Colores neón y materiales de alta respuesta para la duela.</p>
-                <span class="price">$140.00</span>
-            </div>
-        </div>
+                <article class="shoe-card">
+                    <div class="shoe-img alt-img-2" role="img" aria-label="Silueta PUMA MB.03">MB.03</div>
+                    <span class="tag">New Drop</span>
+                    <h3>MB.03 "Toxic"</h3>
+                    <p>Colores neón y materiales de alta respuesta para la duela.</p>
+                    <span class="price" aria-label="Precio: 140 dólares">$140.00</span>
+                </article>
+
+            </section>
+        </main>
     </div>
 
 </body>
