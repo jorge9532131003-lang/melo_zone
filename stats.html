@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas | LaMelo Zone</title>
 
+    <!-- Preconnect para optimizar la carga de fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -14,63 +17,71 @@
 <body>
 
     <div class="container">
-        <a href="index.html" class="back-link">← VOLVER AL DASHBOARD</a>
+        <!-- Se cambió a <nav> por semántica y accesibilidad -->
+        <nav class="back-nav" aria-label="Navegación de retorno">
+            <a href="index.html" class="back-link">← VOLVER AL DASHBOARD</a>
+        </nav>
 
-        <div class="header-stats">
-            <h1>PLAYER CARD: LAMELO BALL</h1>
-            <p>Temporada Regular 2025-2026</p>
-        </div>
+        <!-- Todo el bloque estadístico ahora vive dentro del <main> -->
+        <main>
+            <header class="header-stats">
+                <h1>PLAYER CARD: LAMELO BALL</h1>
+                <p>Temporada Regular 2025-2026</p>
+            </header>
 
-        <table class="stats-table">
-            <thead>
-                <tr>
-                    <th>Puntos</th>
-                    <th>Asistencias</th>
-                    <th>Rebotes</th>
-                    <th>Efectividad</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="highlight-stat">24.5</td>
-                    <td class="highlight-stat">8.4</td>
-                    <td class="highlight-stat">6.2</td>
-                    <td class="highlight-stat">44%</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="stats-table">
+                <!-- Se añade un caption invisible o visible para lectores de pantalla -->
+                <caption>Estadísticas generales de LaMelo Ball</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Puntos</th>
+                        <th scope="col">Asistencias</th>
+                        <th scope="col">Rebotes</th>
+                        <th scope="col">Efectividad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight-stat">24.5</td>
+                        <td class="highlight-stat">8.4</td>
+                        <td class="highlight-stat">6.2</td>
+                        <td class="highlight-stat">44%</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <div class="skills-section">
-            <h2 class="skills-title">Habilidades Especiales</h2>
+            <section class="skills-section" aria-labelledby="skills-title">
+                <h2 id="skills-title" class="skills-title">Habilidades Especiales</h2>
 
-            <div class="skill">
-                <span class="skill-name">Visión de Campo (Passing)</span>
-                <div class="bar-container">
-                    <div class="bar-fill" style="width: 98%;"></div>
+                <div class="skill">
+                    <span class="skill-name">Visión de Campo (Passing)</span>
+                    <div class="bar-container" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" aria-label="Visión de Campo: 98%">
+                        <div class="bar-fill" style="width: 98%;"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="skill">
-                <span class="skill-name">Manejo de Balón (Handles)</span>
-                <div class="bar-container">
-                    <div class="bar-fill" style="width: 92%;"></div>
+                <div class="skill">
+                    <span class="skill-name">Manejo de Balón (Handles)</span>
+                    <div class="bar-container" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Manejo de Balón: 92%">
+                        <div class="bar-fill" style="width: 92%;"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="skill">
-                <span class="skill-name">Tiro de Larga Distancia (3PT)</span>
-                <div class="bar-container">
-                    <div class="bar-fill" style="width: 85%;"></div>
+                <div class="skill">
+                    <span class="skill-name">Tiro de Larga Distancia (3PT)</span>
+                    <div class="bar-container" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Tiro de Larga Distancia: 85%">
+                        <div class="bar-fill" style="width: 85%;"></div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="skill">
-                <span class="skill-name">Clutch Factor</span>
-                <div class="bar-container">
-                    <div class="bar-fill" style="width: 90%;"></div>
+                <div class="skill">
+                    <span class="skill-name">Clutch Factor</span>
+                    <div class="bar-container" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Clutch Factor: 90%">
+                        <div class="bar-fill" style="width: 90%;"></div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
 </body>
